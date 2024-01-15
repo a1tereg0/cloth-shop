@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.png";
+import "./App.scss";
+import Categories from "./components/categories/categories";
 
-function App() {
+const App = () => {
+  const categories = [
+    {
+      id: 1,
+      name: "Caps",
+      imgPath: "https://picsum.photos/id/669/1280/720",
+    },
+    {
+      id: 2,
+      name: "Sneakers",
+      imgPath: "https://picsum.photos/id/103/1280/720",
+    },
+    {
+      id: 3,
+      name: "Coats",
+      imgPath: "https://picsum.photos/id/1059/1280/720",
+    },
+    {
+      id: 4,
+      name: "Mens",
+      imgPath: "https://picsum.photos/id/319/1280/720",
+    },
+    {
+      id: 5,
+      name: "Womens",
+      imgPath: "https://picsum.photos/id/325/1280/720",
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app-header">
+        <img src={logo} alt="logo" />
+        <p>Cloth Shop</p>
+        <h1>Shop All Categories</h1>
+      </div>
+      <Categories categories={categories} />
     </div>
   );
-}
+};
 
 export default App;
