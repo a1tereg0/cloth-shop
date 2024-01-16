@@ -1,4 +1,4 @@
-import "./category.scss";
+import "./Category.scss";
 
 const Category = ({ category }) => {
   const { name, imgPath } = category;
