@@ -1,5 +1,5 @@
-import Category from "../category/category";
-import "./categories.scss";
+import Category from "../category/Category";
+import "./Categories.scss";
 
 const Categories = ({ categories }) => (
   <div className="categories">

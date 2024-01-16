@@ -1,0 +1,31 @@
+.nav {
+    height: 10vmin;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+    .logo {
+      height: 100%;
+      width: 10rem;
+      padding:0.4rem;
+        
+      img {
+        max-height: 8vmin ;
+        border-radius: 50% 20% / 10% 40%;
+      }
+    }
+  
+    .nav-links {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  
+      .nav-link {
+        padding: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+  
