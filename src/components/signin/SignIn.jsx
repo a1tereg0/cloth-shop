@@ -5,7 +5,6 @@ import InputForm from "../input-form/InputForm";
 import {
   auth,
   googleRedirectSignIn,
-  createAuthUserDoc,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/Firebase";
 import "./SignIn.scss";
@@ -18,10 +17,7 @@ const initialFormFields = {
 const SignIn = () => {
   useEffect(() => {
     async function getRedirectData() {
-      const response = await getRedirectResult(auth);
-      if (response) {
-        const userDocRef = await createAuthUserDoc(response.user);
-      }
+      await getRedirectResult(auth);
     }
     getRedirectData();
   }, []);
@@ -37,11 +33,7 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      console.log(response);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
