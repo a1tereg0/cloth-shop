@@ -1,12 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
 import logo from "../../../logo.png";
 import "./Navigation.scss";
+import BagIcon from "../../bag-icon/BagIcon";
+import BagDropdown from "../../bag-dropdown/BagDropdown";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { BagContext } from "../../contexts/BagContext";
 import { signOutUser } from "../../../utils/Firebase";
 
 const Navigation = () => {
   const { user } = useContext(UserContext);
+  const { isOpen } = useContext(BagContext);
   return (
     <>
       <div className="nav">
@@ -24,10 +28,12 @@ const Navigation = () => {
             </Link>
           )}
 
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/shop">
             SHOP NOW
           </Link>
+          <BagIcon />
         </div>
+        {isOpen && <BagDropdown />}
       </div>
       <Outlet />
     </>

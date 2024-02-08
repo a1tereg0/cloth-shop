@@ -9,7 +9,16 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -34,6 +43,32 @@ export const googleRedirectSignIn = () =>
   signInWithRedirect(auth, googleAuthProvider);
 
 export const db = getFirestore();
+
+/* Add collection and documents from local JS object
+  One-time use
+  Used to populate data
+*/
+export const addCollection = async (key, objects, field) => {
+  const collectionRef = collection(db, key);
+  const batch = writeBatch(db);
+  objects.forEach((o) => {
+    const documentRef = doc(collectionRef, o[field].toLowerCase());
+    batch.set(documentRef, o);
+  });
+  await batch.commit();
+};
+
+export const getCategoriesMap = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  const categoriesMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+  return categoriesMap;
+};
 
 export const createAuthUserDoc = async (authUser, otherInfo = {}) => {
   if (!authUser) return;

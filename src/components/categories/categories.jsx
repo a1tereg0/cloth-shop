@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Category from "../category/Category";
 import "./Categories.scss";
 

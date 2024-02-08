@@ -1,0 +1,12 @@
+.category-route {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.2rem;
+    row-gap: 3rem;
+}
+.category-route-title {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+    text-transform: capitalize;
+    text-align: center;
+}

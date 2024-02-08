@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
 import { UserProvider } from "./components/contexts/UserContext";
+import { CategoriesProvider } from "./components/contexts/CategoriesContext";
+import { BagProvider } from "./components/contexts/BagContext";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,7 +13,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <CategoriesProvider>
+          <BagProvider>
+            <App />
+          </BagProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
